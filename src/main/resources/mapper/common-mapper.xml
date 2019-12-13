@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bill.repository.CommonMapper">
+    <resultMap id="BaseResultMap" type="com.bill.po.CommonPo">
+        <result column="code_id" property="codeId" jdbcType="VARCHAR"/>
+        <result column="code_value" property="codeValue" jdbcType="VARCHAR"/>
+        <result column="code_name" property="codeName" jdbcType="VARCHAR"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        code_id,
+        code_value,
+        code_name,
+        delete_flag,
+        create_time,
+        update_time
+    </sql>
+
+    <sql id="Base_Column_Without_Time">
+        code_id,
+        code_value,
+        code_name,
+        delete_flag
+    </sql>
+
+    <select id="selectByCodeIdAndCodeVal">
+        select
+        <include refid="Base_Column_Without_Time"/>
+        where code_id = #{codeId} and code_value = #{codeValue}
+    </select>
+</mapper>

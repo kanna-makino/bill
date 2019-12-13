@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bill.repository.BillTypeMapper">
+    <resultMap id="BaseResultMap" type="com.bill.po.BillTypePo">
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="type_id" property="typeId" jdbcType="VARCHAR"/>
+        <result column="type_name" property="typeName" jdbcType="VARCHAR"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,
+        type_id,
+        type_name,
+        comment,
+        delete_flag,
+        create_time,
+        update_time
+    </sql>
+
+    <sql id="Base_Column_Without_Time">
+        uid,
+        type_id,
+        type_name,
+        comment,
+        delete_flag
+    </sql>
+
+    <insert id="insert" parameterType="com.bill.po.BillTypePo">
+        insert into bill_type
+        <include refid="Base_Column_Without_Time"/>
+        values (
+        #{uid},
+        #{typeId},
+        #{typeName},
+        #{comment},
+        #{deleteFlag}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.bill.po.BillTypePo">
+        update bill_type
+        <set>
+            <if test="typeName != null and typeName != ''">
+                type_name = #{typeName},
+            </if>
+            <if test="comment != null and comment != ''">
+                comment = #{comment},
+            </if>
+            <if test="deleteFlag != null">
+                deleteFlag = #{deleteFlag}
+            </if>
+        </set>
+        where type_id = #{typeId}
+    </update>
+
+    <select id="selectBillTypeByTypeId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bill_type
+        where type_id = #{typeId}
+    </select>
+
+    <select id="selectBillTypeByUid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bill_type
+        where uid = #{uid}
+    </select>
+</mapper>

@@ -12,7 +12,7 @@ import java.util.Date;
  * @since 2019/12/8 2:15 下午
  */
 @Data
-public class Budget {
+public class BudgetPo {
 
     // 用户id
     private String uid;
@@ -35,7 +35,7 @@ public class Budget {
     // 记录更新时间
     private Date updateTime;
 
-    public Budget(String uid, String year, String month, BigDecimal budget, Integer deleteFlag) {
+    public BudgetPo(String uid, String year, String month, BigDecimal budget, Integer deleteFlag) {
         this.uid = uid;
         this.year = year;
         this.month = month;
@@ -43,8 +43,8 @@ public class Budget {
         this.deleteFlag = deleteFlag;
     }
 
-    public Budget(String uid, String year, String month, BigDecimal budget, Integer deleteFlag,
-                  Date createTime, Date updateTime) {
+    public BudgetPo(String uid, String year, String month, BigDecimal budget, Integer deleteFlag,
+                    Date createTime, Date updateTime) {
         this.uid = uid;
         this.year = year;
         this.month = month;

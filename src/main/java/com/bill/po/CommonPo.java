@@ -9,7 +9,7 @@ import java.util.Date;
  * @since 2019/12/8 2:13 下午
  */
 @Data
-public class commonPo {
+public class CommonPo {
 
     private String codeId;
 
@@ -23,14 +23,14 @@ public class commonPo {
 
     private Date updateTime;
 
-    public commonPo(String codeId, String value, String codeName, Integer deleteFlag) {
+    public CommonPo(String codeId, String value, String codeName, Integer deleteFlag) {
         this.codeId = codeId;
         this.value = value;
         this.codeName = codeName;
         this.deleteFlag = deleteFlag;
     }
 
-    public commonPo(String codeId, String value, String codeName, Integer deleteFlag,
+    public CommonPo(String codeId, String value, String codeName, Integer deleteFlag,
                     Date createTime, Date updateTime) {
         this.codeId = codeId;
         this.value = value;

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bill.repository.BudgetMapper">
+    <resultMap id="BaseResultMap" type="com.bill.po.BudgetPo">
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="year" property="year" jdbcType="VARCHAR"/>
+        <result column="month" property="month" jdbcType="VARCHAR"/>
+        <result column="budget" property="budget" jdbcType="DECIMAL"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid,
+        year,
+        month,
+        budget,
+        create_time,
+        update_time
+    </sql>
+
+    <sql id="Base_Column_Without_Time">
+        uid,
+        year,
+        month,
+        budget
+    </sql>
+
+    <insert id="insert" parameterType="com.bill.po.BudgetPo">
+        insert into budget
+        <include refid="Base_Column_Without_Time"/>
+        values (
+        #{uid},
+        #{year},
+        #{month},
+        #{budget}
+        )
+    </insert>
+
+    <select id="select" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from budget
+        where
+        uid = #{uid} and year = #{year} and month = #{month}
+    </select>
+</mapper>
