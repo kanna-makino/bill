@@ -11,3 +11,13 @@ A web expense logger app.
 * Intellij idea Community
 * Tomcat 9
 * Ubuntu18.04LTS
+
+
+
+# 功能
+
+* 记录每一笔消费
+* 消费类别管理
+* 按需查看账单
+* 消费统计（按天，按月）
+* 预算消费
