@@ -25,6 +25,9 @@ public class BillTypePo {
     // 备注
     private String comment;
 
+    // 删除标志
+    private Integer deleteFlag;
+
     // 记录创建时间
     private Date createTime;
 
@@ -38,12 +41,13 @@ public class BillTypePo {
         this.comment = comment;
     }
 
-    public BillTypePo(String uid, String typeId, String typeName, String comment, Date createTime,
-                      Date updateTime) {
+    public BillTypePo(String uid, String typeId, String typeName, String comment,
+                      Integer deleteFlag, Date createTime, Date updateTime) {
         this.uid = uid;
         this.typeId = typeId;
         this.typeName = typeName;
         this.comment = comment;
+        this.deleteFlag = deleteFlag;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }

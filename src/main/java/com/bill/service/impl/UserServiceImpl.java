@@ -38,10 +38,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean doLogin(UserPo userPo) {
-        if (userPo == null || userPo.getUid() == null || userPo.getPassword() == null) {
+        if (userPo == null || userPo.getUsername() == null || userPo.getPassword() == null) {
             return false;
         }
-        UserPo storedUserInfo = userMapper.selectUserByUid(userPo.getUid());
+        UserPo storedUserInfo = userMapper.selectUserByName(userPo.getUsername());
         return storedUserInfo != null
                 && storedUserInfo.getPassword() != null
                 && storedUserInfo.getPassword().equals(userPo.getPassword())

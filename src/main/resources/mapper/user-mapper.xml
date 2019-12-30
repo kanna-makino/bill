@@ -52,6 +52,13 @@
         where uid = #{uid}
     </select>
 
+    <select id="selectUserByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where username = #{username}
+    </select>
+
     <select id="getAllUsers" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

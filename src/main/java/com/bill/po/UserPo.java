@@ -31,6 +31,17 @@ public class UserPo {
     // 记录更新时间
     private Date updateTime;
 
+    public UserPo(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public UserPo(String uid, String username, String password) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+    }
+
     public UserPo(String uid, String username, String password, String status) {
         this.uid = uid;
         this.username = username;

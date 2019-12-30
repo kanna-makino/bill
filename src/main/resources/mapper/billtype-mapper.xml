@@ -26,19 +26,19 @@
         uid,
         type_id,
         type_name,
-        comment,
-        delete_flag
+        comment
     </sql>
 
     <insert id="insert" parameterType="com.bill.po.BillTypePo">
         insert into bill_type
+        (
         <include refid="Base_Column_Without_Time"/>
+        )
         values (
-        #{uid},
-        #{typeId},
-        #{typeName},
-        #{comment},
-        #{deleteFlag}
+        #{uid, jdbcType=VARCHAR},
+        #{typeId, jdbcType=VARCHAR},
+        #{typeName, jdbcType=VARCHAR},
+        #{comment, jdbcType=VARCHAR}
         )
     </insert>
 

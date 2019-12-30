@@ -38,6 +38,14 @@ public interface UserMapper {
     UserPo selectUserByUid(@Param("uid") String uid);
 
     /**
+     * 根据用户名获取用户信息。
+     *
+     * @param username 用户名
+     * @return 用户信息
+     */
+    UserPo selectUserByName(@Param("username") String username);
+
+    /**
      * 获取所有用户信息
      *
      * @return 所有用户信息

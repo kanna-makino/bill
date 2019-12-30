@@ -4,12 +4,14 @@ import com.bill.common.ConstantValue;
 import com.bill.po.UserPo;
 import com.bill.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * 用户相关操作API。
@@ -23,9 +25,12 @@ public class CoreController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/login")
-    public ModelAndView doLogin(HttpServletRequest request, @RequestParam UserPo userPo) {
+    @RequestMapping(value = "/login.do")
+    public ModelAndView doLogin(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        UserPo userPo = new UserPo(username, password);
         // 登录成功
         if (userService.doLogin(userPo)) {
             request.getSession().setAttribute(ConstantValue.USER_SESSION_KEY, userPo);

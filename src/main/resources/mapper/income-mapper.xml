@@ -8,7 +8,7 @@
         <result column="uid" property="uid" jdbcType="VARCHAR"/>
         <result column="income_date" property="incomeDate" jdbcType="VARCHAR"/>
         <result column="income_type" property="incomeType" jdbcType="VARCHAR"/>
-        <result column="amount" property="amount" jdbcType="BigDecimal"/>
+        <result column="amount" property="amount" jdbcType="DECIMAL"/>
         <result column="comment" property="comment" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
