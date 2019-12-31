@@ -4,6 +4,7 @@ import com.bill.common.ConstantValue;
 import com.bill.po.UserPo;
 import com.bill.repository.UserMapper;
 import com.bill.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
  * @since 2019/12/7 4:34 下午
  */
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     /**
@@ -41,11 +43,12 @@ public class UserServiceImpl implements UserService {
         if (userPo == null || userPo.getUsername() == null || userPo.getPassword() == null) {
             return false;
         }
+        log.info("登录用户：" + userPo.toString());
         UserPo storedUserInfo = userMapper.selectUserByName(userPo.getUsername());
         return storedUserInfo != null
                 && storedUserInfo.getPassword() != null
                 && storedUserInfo.getPassword().equals(userPo.getPassword())
-                && ConstantValue.ACCOUNT_STATUS_NORMAL.equals(userPo.getStatus());
+                && ConstantValue.ACCOUNT_STATUS_NORMAL.equals(storedUserInfo.getStatus());
     }
 
 }

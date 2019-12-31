@@ -28,6 +28,14 @@
     <insert id="insert" parameterType="com.bill.po.IncomePo">
         insert into
         income (income_no, uid, income_date, income_type, amount, comment)
+        values (
+        #{incomeNo, jdbcType = VARCHAR},
+        #{uid, jdbcType = VARCHAR},
+        #{incomeDate, jdbcType = VARCHAR},
+        #{incomeType, jdbcType = VARCHAR},
+        #{amount, jdbcType = DECIMAL},
+        #{comment, jdbcType = VARCHAR}
+        )
     </insert>
 
     <update id="update" parameterType="com.bill.po.IncomePo">

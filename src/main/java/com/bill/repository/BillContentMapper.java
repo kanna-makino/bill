@@ -1,8 +1,11 @@
 package com.bill.repository;
 
 import com.bill.po.BillContentPo;
+import com.bill.po.condition.BillContentCondition;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author zhulongkun20@163.com
@@ -34,4 +37,22 @@ public interface BillContentMapper {
      * @return 账单实体
      */
     BillContentPo selectByBillNo(@Param("billNo") String billNo);
+
+    /**
+     * 分页获取账单数据。
+     *
+     * @param start 起始位置
+     * @param size  每页数据量
+     * @return 范围的账单。
+     */
+    List<BillContentPo> selectByPage(@Param("page") int start,
+                                     @Param("size") int size);
+
+    /**
+     * 根据检索条件获取数据。
+     *
+     * @param billContentCondition 检索条件。
+     * @return 符合条件的账单集合。
+     */
+    List<BillContentPo> selectByConditions(BillContentCondition billContentCondition);
 }

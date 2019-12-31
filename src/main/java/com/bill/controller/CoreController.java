@@ -2,16 +2,14 @@ package com.bill.controller;
 
 import com.bill.common.ConstantValue;
 import com.bill.po.UserPo;
+import com.bill.service.BillContentService;
 import com.bill.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * 用户相关操作API。
@@ -25,6 +23,9 @@ public class CoreController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private BillContentService billContentService;
+
     @RequestMapping(value = "/login.do")
     public ModelAndView doLogin(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
@@ -34,6 +35,7 @@ public class CoreController {
         // 登录成功
         if (userService.doLogin(userPo)) {
             request.getSession().setAttribute(ConstantValue.USER_SESSION_KEY, userPo);
+            modelAndView.addObject("dataList", billContentService.prepareBillContent(0, 0));
             modelAndView.setViewName("main_bill_content");
         } else {
             // 登录失败

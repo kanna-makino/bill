@@ -5,7 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 分页工具类
+ * 分页工具类，根据传进来的currentPage, pageSize, totalCount, List<T> dataList
+ * 进行分页，获取分页相关数据项。
  *
  * @author zhulongkun20@163.com
  * @since 2019/12/29 4:01 下午
@@ -67,15 +68,15 @@ public class PageHelper<T> {
     }
 
     public boolean isLastPage() {
-        return currentPage == totalPage;
+        return currentPage == getTotalPage();
     }
 
-    public boolean isHasPreviousPage() {
-        return hasPreviousPage;
+    public boolean hasPreviousPage() {
+        return !isFirstPage();
     }
 
-    public boolean isHasNextPage() {
-        return hasNextPage;
+    public boolean hasNextPage() {
+        return !isLastPage();
     }
 
     public void setCurrentPage(Integer currentPage) {
@@ -96,21 +97,5 @@ public class PageHelper<T> {
 
     public void setDataList(List<T> dataList) {
         this.dataList = dataList;
-    }
-
-    public void setFirstPage(boolean firstPage) {
-        isFirstPage = firstPage;
-    }
-
-    public void setLastPage(boolean lastPage) {
-        isLastPage = lastPage;
-    }
-
-    public void setHasPreviousPage(boolean hasPreviousPage) {
-        this.hasPreviousPage = hasPreviousPage;
-    }
-
-    public void setHasNextPage(boolean hasNextPage) {
-        this.hasNextPage = hasNextPage;
     }
 }

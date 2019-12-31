@@ -32,6 +32,9 @@ public class BillContentPo {
     // 金额
     private BigDecimal amount;
 
+    // 备注
+    private String comment;
+
     // 记录创建时间
     private Date createTime;
 
@@ -39,23 +42,25 @@ public class BillContentPo {
     private Date updateTime;
 
     public BillContentPo(String billNo, String uid, String billDate, String billType, String payType,
-                         BigDecimal amount) {
+                         BigDecimal amount, String comment) {
         this.billNo = billNo;
         this.uid = uid;
         this.billDate = billDate;
         this.billType = billType;
         this.payType = payType;
         this.amount = amount;
+        this.comment = comment;
     }
 
     public BillContentPo(String billNo, String uid, String billDate, String billType, String payType,
-                         BigDecimal amount, Date createTime, Date updateTime) {
+                         BigDecimal amount, String comment, Date createTime, Date updateTime) {
         this.billNo = billNo;
         this.uid = uid;
         this.billDate = billDate;
         this.billType = billType;
         this.payType = payType;
         this.amount = amount;
+        this.comment = comment;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }

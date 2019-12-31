@@ -29,7 +29,7 @@
 
     <insert id="insert" parameterType="com.bill.po.BudgetPo">
         insert into budget
-        <include refid="Base_Column_Without_Time"/>
+        (<include refid="Base_Column_Without_Time"/>)
         values (
         #{uid},
         #{year},
