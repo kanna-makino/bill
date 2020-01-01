@@ -1,8 +1,7 @@
 package com.bill.service;
 
 import com.bill.po.BillContentPo;
-
-import java.util.List;
+import com.bill.util.PageHelper;
 
 /**
  * @author zhulongkun20@163.com
@@ -17,5 +16,5 @@ public interface BillContentService {
      * @param pageSize 每页数据量。
      * @return 指定页的账单数据。
      */
-    List<BillContentPo> prepareBillContent(int page, int pageSize);
+    PageHelper<BillContentPo> prepareBillContent(int page, int pageSize);
 }

@@ -38,6 +38,18 @@ public final class ConstantValue {
 
 
     // 每一页数据量
-    public static final Integer PAGE_SIZE = 25;
+    public static final Integer PAGE_SIZE = 10;
+
+
+    // 支付类型
+    public static final String PAY_TYPE_CODE_ID = "0001";
+
+
+    // 根据所剩余额显示不同颜色的进度条
+    public static final String DEFAULT_COLOR = "progress-bar-success";
+
+    public static final String WARNING_COLOR = "progress-bar-warning";
+
+    public static final String DANGET_COLOR = "progress-bar-danger";
 
 }

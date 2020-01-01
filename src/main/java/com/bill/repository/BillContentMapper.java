@@ -31,6 +31,13 @@ public interface BillContentMapper {
     int update(BillContentPo billContentPo);
 
     /**
+     * 获取总记录数
+     *
+     * @return 数据量
+     */
+    int selectAllCount();
+
+    /**
      * 根据账单编号获取一条账单
      *
      * @param billNo 账单编号
@@ -45,7 +52,7 @@ public interface BillContentMapper {
      * @param size  每页数据量
      * @return 范围的账单。
      */
-    List<BillContentPo> selectByPage(@Param("page") int start,
+    List<BillContentPo> selectByPage(@Param("start") int start,
                                      @Param("size") int size);
 
     /**

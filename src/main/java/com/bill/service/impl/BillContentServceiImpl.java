@@ -3,10 +3,9 @@ package com.bill.service.impl;
 import com.bill.common.ConstantValue;
 import com.bill.po.BillContentPo;
 import com.bill.repository.BillContentMapper;
-import com.bill.repository.UserMapper;
 import com.bill.service.BillContentService;
+import com.bill.util.PageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,16 +23,22 @@ public class BillContentServceiImpl implements BillContentService {
     private BillContentMapper billContentMapper;
 
     @Override
-    public List<BillContentPo> prepareBillContent(int page, int pageSize) {
+    public PageHelper<BillContentPo> prepareBillContent(int page, int pageSize) {
+        int pageParam = page;
         int size = pageSize;
+        if (pageParam <= 0) {
+            pageParam = 1;
+        }
         if (size <= 0) {
             size = ConstantValue.PAGE_SIZE;
         }
         // size = 5
-        // page: 1   start: 0~5
-        // page: 2   start: 6~10
-        // page: 3   start: 11~15
-        int start = (page - 1) * pageSize + 1;
-        return billContentMapper.selectByPage(start, size);
+        // page: 1   start: 0~4
+        // page: 2   start: 5~9
+        // page: 3   start: 10~14
+        int start = (pageParam - 1) * size;
+        int totalCount = billContentMapper.selectAllCount();
+        List<BillContentPo> billContentPoList = billContentMapper.selectByPage(start, size);
+        return new PageHelper<BillContentPo>(pageParam, size, totalCount, billContentPoList);
     }
 }

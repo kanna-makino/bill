@@ -74,10 +74,31 @@
         where bill_no = #{billNo}
     </update>
 
+    <select id="selectAllCount" resultType="java.lang.Integer">
+        select count(*)
+        from bill_content
+    </select>
+
     <select id="selectByPage" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
-        from bill_content
+        bill.bill_no as bill_no,
+        bill.uid as uid,
+        bill.bill_date as bill_date,
+        type.type_name as bill_type,
+        common.code_name as pay_type,
+        bill.amount as amount,
+        bill.comment as comment,
+        bill.create_time as create_time,
+        bill.update_time as update_time
+        from bill_content as bill
+        left join bill_type as type
+        on bill.bill_type = type.type_id
+        left join common as common
+        on bill.pay_type = common.code_value
+        and common.code_id = '${@com.bill.common.ConstantValue@PAY_TYPE_CODE_ID}'
+        where type.delete_flag = 0
+        and common.delete_flag = 0
+        order by bill_date desc, type_name, pay_type
         limit #{start}, #{size}
     </select>
 

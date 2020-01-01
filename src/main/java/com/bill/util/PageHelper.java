@@ -11,6 +11,7 @@ import java.util.List;
  * @author zhulongkun20@163.com
  * @since 2019/12/29 4:01 下午
  */
+@Data
 public class PageHelper<T> {
     // 当前页码
     private int currentPage;
@@ -36,66 +37,19 @@ public class PageHelper<T> {
         this.pageSize = pageSize;
         this.totalCount = totalCount;
         this.dataList = dataList;
-    }
 
-    public Integer getCurrentPage() {
-        return currentPage;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public Integer getTotalPage() {
         if (totalCount % pageSize == 0) {
-            totalPage = totalCount / pageSize;
+            this.totalPage = totalCount / pageSize;
         } else {
-            totalPage = totalCount / pageSize + 1;
+            this.totalPage = totalCount / pageSize + 1;
         }
-        return totalPage;
-    }
 
-    public Integer getTotalCount() {
-        return totalCount;
-    }
+        this.isFirstPage = (currentPage == 1);
 
-    public List<T> getDataList() {
-        return dataList;
-    }
+        this.isLastPage = (currentPage == totalPage);
 
-    public boolean isFirstPage() {
-        return currentPage == 1;
-    }
+        this.hasNextPage = !isLastPage;
 
-    public boolean isLastPage() {
-        return currentPage == getTotalPage();
-    }
-
-    public boolean hasPreviousPage() {
-        return !isFirstPage();
-    }
-
-    public boolean hasNextPage() {
-        return !isLastPage();
-    }
-
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public void setTotalPage(Integer totalPage) {
-        this.totalPage = totalPage;
-    }
-
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public void setDataList(List<T> dataList) {
-        this.dataList = dataList;
+        this.hasPreviousPage = !isFirstPage;
     }
 }
