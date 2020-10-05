@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -49,6 +50,11 @@ public class UserServiceImpl implements UserService {
                 && storedUserInfo.getPassword() != null
                 && storedUserInfo.getPassword().equals(userPo.getPassword())
                 && ConstantValue.ACCOUNT_STATUS_NORMAL.equals(storedUserInfo.getStatus());
+    }
+
+    @Override
+    public List<UserPo> getUsersInfo() {
+        return userMapper.getAllUsers();
     }
 
 }

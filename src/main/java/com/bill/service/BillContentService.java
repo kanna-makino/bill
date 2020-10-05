@@ -16,5 +16,5 @@ public interface BillContentService {
      * @param pageSize 每页数据量。
      * @return 指定页的账单数据。
      */
-    PageHelper<BillContentPo> prepareBillContent(int page, int pageSize);
+    PageHelper<BillContentPo> prepareBillContent(String uid, int page, int pageSize);
 }

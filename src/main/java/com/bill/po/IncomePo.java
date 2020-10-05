@@ -2,7 +2,6 @@ package com.bill.po;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -27,7 +26,7 @@ public class IncomePo {
     private String incomeType;
 
     // 收入金额
-    private BigDecimal amount;
+    private Double amount;
 
     // 备注
     private String comment;
@@ -38,7 +37,7 @@ public class IncomePo {
     // 记录更新日期
     private Date updateTime;
 
-    public IncomePo(String incomeNo, String uid, String incomeDate, String incomeType, BigDecimal amount,
+    public IncomePo(String incomeNo, String uid, String incomeDate, String incomeType, double amount,
                     String comment) {
         this.incomeNo = incomeNo;
         this.uid = uid;
@@ -48,7 +47,7 @@ public class IncomePo {
         this.comment = comment;
     }
 
-    public IncomePo(String incomeNo, String uid, String incomeDate, String incomeType, BigDecimal amount,
+    public IncomePo(String incomeNo, String uid, String incomeDate, String incomeType, double amount,
                     String comment, Date createTime, Date updateTime) {
         this.incomeNo = incomeNo;
         this.uid = uid;

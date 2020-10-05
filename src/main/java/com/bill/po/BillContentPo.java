@@ -2,7 +2,6 @@ package com.bill.po;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -30,7 +29,7 @@ public class BillContentPo {
     private String payType;
 
     // 金额
-    private BigDecimal amount;
+    private Double amount;
 
     // 备注
     private String comment;
@@ -42,7 +41,7 @@ public class BillContentPo {
     private Date updateTime;
 
     public BillContentPo(String billNo, String uid, String billDate, String billType, String payType,
-                         BigDecimal amount, String comment) {
+                         double amount, String comment) {
         this.billNo = billNo;
         this.uid = uid;
         this.billDate = billDate;
@@ -53,7 +52,7 @@ public class BillContentPo {
     }
 
     public BillContentPo(String billNo, String uid, String billDate, String billType, String payType,
-                         BigDecimal amount, String comment, Date createTime, Date updateTime) {
+                         double amount, String comment, Date createTime, Date updateTime) {
         this.billNo = billNo;
         this.uid = uid;
         this.billDate = billDate;

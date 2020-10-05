@@ -36,6 +36,10 @@ public final class ConstantValue {
     // 当前登录用户session-key
     public static final String USER_SESSION_KEY = "loginUser";
 
+    // Session username
+    public static final String SESSION_USERNAME = "username";
+    public static final String SESSION_UID = "uid";
+
 
     // 每一页数据量
     public static final Integer PAGE_SIZE = 10;
@@ -51,5 +55,6 @@ public final class ConstantValue {
     public static final String WARNING_COLOR = "progress-bar-warning";
 
     public static final String DANGET_COLOR = "progress-bar-danger";
+
 
 }

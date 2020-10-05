@@ -2,7 +2,6 @@ package com.bill.controller.form;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -22,21 +21,21 @@ public class BudgetForm {
     private String month;
 
     /* 本月预算 */
-    private BigDecimal budget;
+    private Double budget;
 
     /* 本月已消费金额 */
-    private BigDecimal consumed;
+    private Double consumed;
 
     /* 本月余额 */
-    private BigDecimal restAmount;
+    private Double restAmount;
 
     /* 本月余额占总预算比率 */
     private Double consumedRate;
 
     /* 本月消费金额按类别统计 */
-    private Map<String, BigDecimal> type2ConsumedMap;
+    private Map<String, Double> type2ConsumedMap;
 
     /* 过去5个月消费金额与当月预算比较情况 */
-    private List<Map<String, BigDecimal>> fiveMonthsStatList;
+    private List<Map<String, Double>> fiveMonthsStatList;
 
 }

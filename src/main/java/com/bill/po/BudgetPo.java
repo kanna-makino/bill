@@ -2,7 +2,6 @@ package com.bill.po;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -24,7 +23,7 @@ public class BudgetPo {
     private String month;
 
     // 预算
-    private BigDecimal budget;
+    private Double budget;
 
     // 删除标识
     private Integer deleteFlag;
@@ -35,7 +34,7 @@ public class BudgetPo {
     // 记录更新时间
     private Date updateTime;
 
-    public BudgetPo(String uid, String year, String month, BigDecimal budget, Integer deleteFlag) {
+    public BudgetPo(String uid, String year, String month, double budget, Integer deleteFlag) {
         this.uid = uid;
         this.year = year;
         this.month = month;
@@ -43,7 +42,7 @@ public class BudgetPo {
         this.deleteFlag = deleteFlag;
     }
 
-    public BudgetPo(String uid, String year, String month, BigDecimal budget, Integer deleteFlag,
+    public BudgetPo(String uid, String year, String month, double budget, Integer deleteFlag,
                     Date createTime, Date updateTime) {
         this.uid = uid;
         this.year = year;

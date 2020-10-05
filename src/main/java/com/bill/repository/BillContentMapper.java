@@ -52,7 +52,8 @@ public interface BillContentMapper {
      * @param size  每页数据量
      * @return 范围的账单。
      */
-    List<BillContentPo> selectByPage(@Param("start") int start,
+    List<BillContentPo> selectByPage(@Param("uid") String uid,
+                                     @Param("start") int start,
                                      @Param("size") int size);
 
     /**
@@ -62,4 +63,14 @@ public interface BillContentMapper {
      * @return 符合条件的账单集合。
      */
     List<BillContentPo> selectByConditions(BillContentCondition billContentCondition);
+
+    /**
+     * 获取指定日期范围内的账单。
+     *
+     * @param from 起始日期
+     * @param to   终止日期
+     * @return 目标数据。
+     */
+    List<BillContentPo> selectByDateFromTo(@Param("from") String from,
+                                           @Param("to") String to);
 }

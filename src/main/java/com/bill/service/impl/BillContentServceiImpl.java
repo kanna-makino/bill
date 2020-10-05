@@ -23,7 +23,7 @@ public class BillContentServceiImpl implements BillContentService {
     private BillContentMapper billContentMapper;
 
     @Override
-    public PageHelper<BillContentPo> prepareBillContent(int page, int pageSize) {
+    public PageHelper<BillContentPo> prepareBillContent(String uid, int page, int pageSize) {
         int pageParam = page;
         int size = pageSize;
         if (pageParam <= 0) {
@@ -38,7 +38,7 @@ public class BillContentServceiImpl implements BillContentService {
         // page: 3   start: 10~14
         int start = (pageParam - 1) * size;
         int totalCount = billContentMapper.selectAllCount();
-        List<BillContentPo> billContentPoList = billContentMapper.selectByPage(start, size);
+        List<BillContentPo> billContentPoList = billContentMapper.selectByPage(uid, start, size);
         return new PageHelper<BillContentPo>(pageParam, size, totalCount, billContentPoList);
     }
 }

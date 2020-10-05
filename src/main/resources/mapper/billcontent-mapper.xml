@@ -8,7 +8,7 @@
         <result column="bill_date" property="billDate" jdbcType="VARCHAR"/>
         <result column="bill_type" property="billType" jdbcType="VARCHAR"/>
         <result column="pay_type" property="payType" jdbcType="VARCHAR"/>
-        <result column="amount" property="amount" jdbcType="DECIMAL"/>
+        <result column="amount" property="amount" jdbcType="DOUBLE"/>
         <result column="comment" property="comment" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
@@ -98,6 +98,7 @@
         and common.code_id = '${@com.bill.common.ConstantValue@PAY_TYPE_CODE_ID}'
         where type.delete_flag = 0
         and common.delete_flag = 0
+        and bill.uid = #{uid}
         order by bill_date desc, type_name, pay_type
         limit #{start}, #{size}
     </select>
@@ -107,5 +108,15 @@
         <include refid="Base_Column_List"/>
         from bill_content
         where bill_no = #{billNo}
+    </select>
+
+    <select id="selectByDateFromTo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bill_content
+        where uid = #{uid}
+        and bill_date <![CDATA[>=]]> #{from}
+        and bill_date <![CDATA[<=]]> #{to}
+        order by bill_date desc, type_name, pay_type
     </select>
 </mapper>

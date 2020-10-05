@@ -2,6 +2,8 @@ package com.bill.service;
 
 import com.bill.po.UserPo;
 
+import java.util.List;
+
 /**
  * @author zhulongkun20@163.com
  * @since 2019/12/7 4:34 下午
@@ -23,4 +25,11 @@ public interface UserService {
      * @return 登录成功:true 登录失败:false
      */
     boolean doLogin(UserPo userPo);
+
+    /**
+     * 获取所有用户信息
+     *
+     * @return 所有用户信息的集合
+     */
+    List<UserPo> getUsersInfo();
 }
