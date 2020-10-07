@@ -119,4 +119,12 @@
         and bill_date <![CDATA[<=]]> #{to}
         order by bill_date desc, type_name, pay_type
     </select>
+
+    <select id="selectMaxBillNoByDate" resultType="java.lang.String">
+        select
+        max(bill_no)
+        from bill_content
+        where bill_no
+        like CONCAT('N', #{date}, '%')
+    </select>
 </mapper>

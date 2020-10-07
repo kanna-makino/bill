@@ -1,6 +1,5 @@
 package com.bill.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.bill.common.ConstantValue;
 import com.bill.po.BillContentPo;
 import com.bill.po.UserPo;
@@ -12,6 +11,7 @@ import com.bill.util.ResponseUtils;
 import com.bill.util.ResponseVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.thymeleaf.util.StringUtils;
@@ -19,6 +19,7 @@ import org.thymeleaf.util.StringUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -120,5 +121,25 @@ public class CoreController {
         modelAndView.addObject("usersList", userPoList);
         modelAndView.setViewName("main_user");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/newBill.do")
+    @ResponseBody
+    public ResponseVO newBill(HttpServletRequest request) {
+        String uid = (String) request.getSession().getAttribute(ConstantValue.SESSION_UID);
+        String billDate = request.getParameter("bill_date");
+        String billType = request.getParameter("bill_type");
+        String payType = request.getParameter("pay_type");
+        Double amount = Double.valueOf(request.getParameter("amount"));
+        String comment = request.getParameter("remark");
+        BillContentPo billContentPo = new BillContentPo();
+        billContentPo.setUid(uid);
+        billContentPo.setBillDate(billDate == null ? "19700101" : billDate.replace("-", ""));
+        billContentPo.setBillType(billType);
+        billContentPo.setPayType(payType);
+        billContentPo.setAmount(amount);
+        billContentPo.setComment(comment);
+        billContentService.createBillContent(billContentPo);
+        return ResponseUtils.sucess("数据添加成功");
     }
 }

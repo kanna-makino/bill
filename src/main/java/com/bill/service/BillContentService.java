@@ -17,4 +17,11 @@ public interface BillContentService {
      * @return 指定页的账单数据。
      */
     PageHelper<BillContentPo> prepareBillContent(String uid, int page, int pageSize);
+
+    /**
+     * 新增数据
+     *
+     * @param billContentPo 账单实体
+     */
+    void createBillContent(BillContentPo billContentPo);
 }

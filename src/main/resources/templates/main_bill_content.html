@@ -115,7 +115,9 @@
                         <td th:text="${bill.comment}">不怕，有的是钱！</td>
                         <td>
                             <div class="btn-group">
-                                <a th:href="@{add.do}" class="btn btn-default">新增</a>
+                                <button class="btn btn-default" data-toggle="modal"
+                                        data-target="#add_bill">新增
+                                </button>
                                 <a th:href="@{'edit.do?billNo=' + ${bill.billNo}}" class="btn btn-info">修改</a>
                                 <a th:href="@{'delete.do?billNo=' + ${bill.billNo}}" class="btn btn-danger">删除</a>
                             </div>
@@ -155,6 +157,63 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="add_bill" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>新增账单数据</p>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{newBill.do}" method="post">
+                    <div class="form-group">
+                        <label for="bill_date">消费日期</label>
+                        <input type="date" name="bill_date" class="form-control" id="bill_date" placeholder="消费日期">
+                    </div>
+                    <div class="form-group">
+                        <label for="bill_type">消费类型</label>
+                        <select name="bill_type" id="bill_type" class="form-control">
+                            <option value="001" selected>餐饮</option>
+                            <option value="002">出行</option>
+                            <option value="003">衣物</option>
+                            <option value="004">3C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay_type">支付方式</label>
+                        <select name="pay_type" id="pay_type" class="form-control">
+                            <option value="01" selected>支付宝</option>
+                            <option value="02">微信</option>
+                            <option value="03">花呗</option>
+                            <option value="04">银行卡</option>
+                            <option value="05">餐卡</option>
+                            <option value="06">现金</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">消费金额</label>
+                        <input class="form-control" type="number" name="amount" id="amount" placeholder="消费金额"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">备注</label>
+                        <textarea class="form-control" rows="3" name="remark" id="remark" placeholder="备注"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交表单</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <!--                <button type="button" οnclick="add_info()" class="btn btn-primary">-->
+                <!--                    提交更改-->
+                <!--                </button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- 底部页脚部分 -->
 <div class="footer">
     <p class="text-center">

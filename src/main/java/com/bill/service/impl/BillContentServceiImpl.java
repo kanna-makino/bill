@@ -8,6 +8,8 @@ import com.bill.util.PageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +41,25 @@ public class BillContentServceiImpl implements BillContentService {
         int start = (pageParam - 1) * size;
         int totalCount = billContentMapper.selectAllCount();
         List<BillContentPo> billContentPoList = billContentMapper.selectByPage(uid, start, size);
-        return new PageHelper<BillContentPo>(pageParam, size, totalCount, billContentPoList);
+        return new PageHelper<>(pageParam, size, totalCount, billContentPoList);
+    }
+
+    @Override
+    public void createBillContent(BillContentPo billContentPo) {
+        String billNo;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date date = new Date();
+        String todayDate = simpleDateFormat.format(date);
+        String maxBillNo = billContentMapper.selectMaxBillNoByDate(todayDate);
+        if (maxBillNo == null) {
+            billNo = "N" + todayDate + "0001";
+        } else {
+            // TODO 生成最大编号逻辑不对
+            String endSubStr = maxBillNo.substring(maxBillNo.length() - 4);
+            billNo = String.valueOf(Integer.parseInt(endSubStr) + 1);
+//            billNo =
+        }
+        billContentPo.setBillNo(billNo);
+        billContentMapper.insert(billContentPo);
     }
 }

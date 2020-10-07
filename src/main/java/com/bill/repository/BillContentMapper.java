@@ -73,4 +73,12 @@ public interface BillContentMapper {
      */
     List<BillContentPo> selectByDateFromTo(@Param("from") String from,
                                            @Param("to") String to);
+
+    /**
+     * 指定日期获取最大编号
+     *
+     * @param date 指定日期
+     * @return 给定日期最大账单编号
+     */
+    String selectMaxBillNoByDate(@Param("date") String date);
 }

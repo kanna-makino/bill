@@ -15,5 +15,9 @@ public class GrammerTest {
 
         String date = formatter.format(LocalDate.of(2020, 1, 1));
         System.out.println(date);
+
+        String str = "20200001";
+        String no = str.substring(str.length() - 4);
+        int num = Integer.parseInt(no + 1);
     }
 }

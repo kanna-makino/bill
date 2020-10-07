@@ -32,6 +32,13 @@ public class ResponseUtils {
         return responseVO;
     }
 
+    public static ResponseVO sucess(String msg) {
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setCode(SUCCESS_CODE);
+        responseVO.setMsg(msg);
+        return responseVO;
+    }
+
     public static ResponseVO failed(String msg) {
         ResponseVO responseVO = new ResponseVO();
         responseVO.setCode(FIALED_CODE);

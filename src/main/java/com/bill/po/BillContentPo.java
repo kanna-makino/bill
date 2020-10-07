@@ -40,6 +40,9 @@ public class BillContentPo {
     // 记录更新时间
     private Date updateTime;
 
+    public BillContentPo() {
+    }
+
     public BillContentPo(String billNo, String uid, String billDate, String billType, String payType,
                          double amount, String comment) {
         this.billNo = billNo;

@@ -89,40 +89,12 @@
                         <td th:text="${user.username}">test_name</td>
                         <td th:text="${user.password}">123456</td>
                         <td th:text="${user.status}">Normal</td>
-                        <td th:text="${user.createTime}">not exist</td>
-                        <td th:text="${user.updateTime}">not exist</td>
+                        <td th:text="${#dates.format(user.createTime, 'yyyy-MM-dd HH:mm:ss')}">not exist</td>
+                        <td th:text="${#dates.format(user.updateTime, 'yyyy-MM-dd HH:mm:ss')}">not exist</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-<!--            <ul class="pagination" style="float: right;">-->
-<!--                <li>-->
-<!--                    <a href="#" th:href="@{billContent.do?page=1}">&laquo;</a>-->
-<!--                </li>-->
-<!--                <li th:if="${pageHelper.getCurrentPage() - 2} &gt; 0">-->
-<!--                    <a th:text="${pageHelper.getCurrentPage() - 2}"-->
-<!--                       th:href="@{'billContent.do?page=' + ${pageHelper.getCurrentPage() - 2}}">1</a>-->
-<!--                </li>-->
-<!--                <li th:if="${pageHelper.getCurrentPage() - 1} &gt; 0">-->
-<!--                    <a th:text="${pageHelper.getCurrentPage() - 1}"-->
-<!--                       th:href="@{'billContent.do?page=' + ${pageHelper.getCurrentPage() - 1}}">1</a>-->
-<!--                </li>-->
-<!--                <li class="active">-->
-<!--                    <a th:text="${pageHelper.getCurrentPage()}"-->
-<!--                       th:href="@{'billContent.do?page=' + ${pageHelper.getCurrentPage()}}">1</a>-->
-<!--                </li>-->
-<!--                <li th:if="${pageHelper.getCurrentPage() + 1} &lt; ${pageHelper.getTotalPage() + 1}">-->
-<!--                    <a th:text="${pageHelper.getCurrentPage() + 1}"-->
-<!--                       th:href="@{'billContent.do?page=' + ${pageHelper.getCurrentPage() + 1}}">1</a>-->
-<!--                </li>-->
-<!--                <li th:if="${pageHelper.getCurrentPage() + 2} &lt; ${pageHelper.getTotalPage() + 1}">-->
-<!--                    <a th:text="${pageHelper.getCurrentPage() + 2}"-->
-<!--                       th:href="@{'billContent.do?page=' + ${pageHelper.getCurrentPage() + 2}}">1</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#" th:href="@{'billContent.do?page=' + ${pageHelper.getTotalPage()}}">&raquo;</a>-->
-<!--                </li>-->
-<!--            </ul>-->
         </div>
     </div>
 </div>
